@@ -6,7 +6,7 @@ export const addContact = createAsyncThunk(
     'contacts/addcontacts',
     async (newContact, { rejectWithValue }) => {
         try {
-            const response = await axios.post('/contacts', newContact);
+            const response = await axios.post('https://contact-app-server-rbae.onrender.com/contacts', newContact);
             toast.success('A new contact has been added');
             return response.data;
         } catch (error) {
@@ -22,7 +22,7 @@ export const getAllcontacts = createAsyncThunk(
     'contacts/getcontacts',
     async (_, { rejectWithValue }) => {
         try {
-            const response = await axios.get('/contacts');
+            const response = await axios.get('https://contact-app-server-rbae.onrender.com/contacts');
             return response.data;
         } catch (error) {
             toast.error('Unable to fetch contacts');
@@ -35,7 +35,7 @@ export const removeContact = createAsyncThunk(
     'contacts/removecontacts',
     async (id, { rejectWithValue }) => {
         try {
-            const response = await axios.delete(`/contacts/${id}`);
+            const response = await axios.delete(`https://contact-app-server-rbae.onrender.com/contacts/${id}`);
             toast.warn('Contact has been deleted');
             return response.data;
         } catch (error) {
@@ -52,7 +52,7 @@ export const updateContact = createAsyncThunk(
     async (toBeUpdatedContact, { rejectWithValue }) => {
         try {
             const response = await axios.put(
-                `/contacts/${toBeUpdatedContact._id}`,
+                `https://contact-app-server-rbae.onrender.com/contacts/${toBeUpdatedContact._id}`,
                 toBeUpdatedContact
             );
             toast.success(`Contact has been updated`);
@@ -69,7 +69,7 @@ export const sortContact = createAsyncThunk(
    async (toBeSorted, {rejectWithValue}) => {
     try {
         console.log("Rreq here");
-        const response = await axios.get(`/contacts/sort?key=${"name"}&direction=${"asc"}`);
+        const response = await axios.get(`https://contact-app-server-rbae.onrender.com/contacts/sort?key=${"name"}&direction=${"asc"}`);
        // const data = await response.json();
         toast.success("Contacts has been sorted")
         console.log(response.data);
